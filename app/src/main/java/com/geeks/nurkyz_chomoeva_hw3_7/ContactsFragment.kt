@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geeks.nurkyz_chomoeva_hw3_7.databinding.FragmentContactsBinding
 
@@ -35,13 +37,13 @@ class ContactsFragment : Fragment() {
                 putString("contactName", contactsModel.name)
                 putString("contactNumber", contactsModel.number)
                 putString("contactPhoto", contactsModel.image)
+
             }
 
             val fragment = ChatFragment()
             fragment.arguments = bundle
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_view_tag, fragment).addToBackStack(null)
-                .commit()
+            findNavController().navigate(R.id.action_contactsFragment_to_chatFragment,bundle)
+
         }
         viewBinding.apply {
             rvContacts.adapter = contactAdapter

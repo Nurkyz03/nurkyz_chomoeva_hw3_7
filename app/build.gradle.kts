@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -37,6 +38,7 @@ android {
         viewBinding = true
     }
 }
+var nacVersion = "2.7.7"
 
 dependencies {
 
@@ -44,6 +46,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
+    implementation("androidx.navigation:navigation-fragment:$nacVersion")
+    implementation("androidx.navigation:navigation-ui:$nacVersion")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.androidx.constraintlayout)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.0")

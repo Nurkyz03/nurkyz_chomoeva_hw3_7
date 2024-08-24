@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.geeks.nurkyz_chomoeva_hw3_7.databinding.FragmentChatBinding
@@ -47,9 +48,7 @@ class ChatFragment : Fragment() {
                 }
                 val fragment = ContactInfoFragment()
                 fragment.arguments = bundle
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container_view_tag, fragment).addToBackStack(null)
-                    .commit()
+                findNavController().navigate(R.id.action_chatFragment_to_contactInfoFragment,bundle)
             }
             btnSend.setOnClickListener {
 
